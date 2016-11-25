@@ -1,0 +1,19 @@
+{
+  "name": "projecttwo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "method-override": "^2.3.7",
+    "mustache-express": "^1.2.4",
+    "node-fetch": "^1.6.3",
+    "pg-promise": "^5.4.3"
+  }
+}
