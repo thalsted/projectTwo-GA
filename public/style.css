@@ -1,3 +1,7 @@
-h1 {
-  color: blue;
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.logo {
+  font-family: 'Raleway', sans-serif;
 }
