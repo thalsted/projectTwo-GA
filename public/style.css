@@ -15,6 +15,10 @@ body {
   margin-left: 10px;
 }
 
+.logo a {
+  color: white;
+}
+
 .top-nav {
   height: 145px;
 }
@@ -22,11 +26,11 @@ body {
 .nav {
   text-align: right;
   font-size: 30px;
-  margin-top: 35px;
+  margin-top: 33px;
   margin-right: 25px;
 }
 
-#signup {
+.account {
   color: white;
   padding: 3px;
   background-color: rgba(0,0,0,0.5);
@@ -50,15 +54,42 @@ body {
 
 @keyframes cycle {
   0% {
-    background-color: rgba(255,60,0,0.4);
+    background-color: rgba(255,60,0,0.5);
     color: white;
   } 50% {
-      background-color: rgba(255,255,225,0.6);
+      background-color: rgba(255,255,225,0.7);
       color: black;
   } 100% {
-    background-color: rgba(255,60,0,0.4);
+    background-color: rgba(255,60,0,0.5);
     color: white;
   }
+}
+
+#login {
+  margin-top: 100px;
+}
+
+div#login .credentials {
+  height: 100px;
+  width: 400px;
+}
+
+div#login .inputs {
+  font-size: 20px;
+  height: 50px;
+  line-height: 40px;
+  color: white;
+}
+
+div#login input[type=text]:focus {
+  border-bottom: 1px solid #ff3d00;
+  box-shadow: 0 1px 0 0 #ff3d00;
+}
+
+div#login input::placeholder {
+  color: white;
+  font-size: 50px;
+  line-height: 40px;
 }
 
 .fullscreen-bg { /* #VidBackground */
@@ -84,20 +115,17 @@ body {
        -moz-transform: translate(-50%, -50%);
         -ms-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%);
+    background-color: rgba(255,60,0,0.5)
 }
 
 @media (max-width: 767px) { /* #VidBackground */
-    .fullscreen-bg {
-        background: url('') center center / cover no-repeat;
-    }
+  .fullscreen-bg {
+    background-color: rgba(255,60,0,0.35);
+  }
 
-    .fullscreen-bg__video {
-        display: none;
-    }
-
-    .logo {
-      color: black;
-    }
+  .fullscreen-bg__video {
+    display: none;
+  }
 }
 
 /* Credits */
