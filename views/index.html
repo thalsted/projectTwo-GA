@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>HvstlePvffin</title>
+  <title>HustlePuffin</title>
   <link href="https://fonts.googleapis.com/css?family=Raleway:800|Source+Sans+Pro" rel="stylesheet">
   <link rel="stylesheet" href="/style.css">
   <link rel="stylesheet" href="/materialize.css">
@@ -11,17 +11,27 @@
   <script src="/script.js" type="text/javascript" defer></script>
 </head>
 <body>
-  <header>
-    <div class="logo">
+  <div class="fullscreen-bg">
+    <video loop muted autoplay poster="/images/bg.m4v" class="fullscreen-bg__video">
+        <source src="/images/bg.m4v" type="video/mp4">
+    </video>
+  </div>
+  <div class="row" id="header">
+    <div class="col s6">
+      <p class="logo">
+        <span class="deep-orange-text accent-3">//</span>HustlePuffin
+      </p>
     </div>
-    <nav>
-    </nav>
-  </header>
-  <div id="main-container">
-    <div id="cta">
+    <div class="top-nav col s6">
+      <p class="nav"><a id="signup" href="/login">&nbspLOGIN | SIGNUP&nbsp</a></p>
     </div>
   </div>
-  <footer>
-  </footer>
+  <div class="container row main">
+    <div class="col s1"></div>
+    <div id="cta" class="col s8 valign-wrapper">
+      <p class="valign"><span>Let's&nbsp</span><br><span>Hustle.&nbsp</span></p>
+    </div>
+    <div class="col s3"></div>
+  </div>
 </body>
 </html>

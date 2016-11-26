@@ -1,7 +1,8 @@
 var express = require('express');
 var app = express();
 var pgp = require('pg-promise')();
-var db = pgp(process.env.DATABASE_URL) || pgp("postgres://taylorhalsted@localhost:5432/hustlepuffin");
+var db = pgp('postgres://taylorhalsted@localhost:5432/hustlepuffin');
+// pgp(process.env.DATABASE_URL) || not working ##Need to debug
 var mustache = require('mustache-express');
 var methodOverride = require('method-override');
 var bdPars = require('body-parser');
@@ -19,3 +20,11 @@ app.use(express.static(__dirname+'/public'));
 app.use(methodOverride('_method'));
 app.use(bdPars.urlencoded({ extended: false}));
 app.use(bdPars.json());
+
+app.get('/', function(req,res) {
+  res.render('index')
+})
+
+app.get('/login', function(req,res) {
+  res.render('login')
+})
