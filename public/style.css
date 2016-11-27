@@ -3,6 +3,10 @@ body {
   /* font-family: 'Source Sans Pro', sans-serif; */
 }
 
+body.bg {
+  background-color: rgba(255,60,0,0.35)
+}
+
 #header {
   height: 145px;
   color: white;
@@ -65,7 +69,7 @@ body {
   }
 }
 
-#login {
+div#login {
   margin-top: 100px;
 }
 
@@ -92,6 +96,61 @@ div#login input::placeholder {
   line-height: 40px;
 }
 
+div#create {
+  margin-top: 0;
+  background-color: rgba(0,0,0,0.5);
+  padding: 25px 20px;
+}
+
+div#create .inputs {
+  font-size: 15px;
+  font-family: 'Source Sans Pro', sans-serif;
+  height: 40px;
+  line-height: 40px;
+  color: white;
+}
+
+div#create input[type=text]:focus {
+  border-bottom: 1px solid #ff3d00;
+  box-shadow: 0 1px 0 0 #ff3d00;
+}
+
+div#create input::placeholder {
+  color: white;
+  font-size: 25px;
+  font-family: 'Raleway', sans-serif;
+  line-height: 40px;
+}
+
+div#create textarea {
+  font-size: 15px;
+  font-family: 'Source Sans Pro', sans-serif;
+  line-height: 20px;
+  color: white;
+}
+
+div#create textarea[type=text]:focus {
+  border-bottom: 1px solid #ff3d00;
+  box-shadow: 0 1px 0 0 #ff3d00;
+}
+
+div#create textarea::placeholder {
+  color: white;
+  font-size: 25px;
+  font-family: 'Raleway', sans-serif;
+  line-height: 95px
+}
+
+div#create h1 {
+  font-size: 30px;
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: white;
+  background-color: #ff3d00;
+  padding: 3px 10px;
+  display: inline-block;
+}
+
 .fullscreen-bg { /* #VidBackground */
     position: fixed;
     top: 0;
@@ -103,19 +162,19 @@ div#login input::placeholder {
 }
 
 .fullscreen-bg__video { /* #VidBackground */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: auto;
-    height: auto;
-    opacity: 0.7;
-    min-width: 100%;
-    min-height: 100%;
-    -webkit-transform: translate(-50%, -50%);
-       -moz-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
-    background-color: rgba(255,60,0,0.5)
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: auto;
+  height: auto;
+  opacity: 0.7;
+  min-width: 100%;
+  min-height: 100%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background-color: rgba(255,60,0,0.5)
 }
 
 @media (max-width: 767px) { /* #VidBackground */

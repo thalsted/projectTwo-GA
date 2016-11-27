@@ -40,3 +40,7 @@ app.get('/signup', function(req,res) {
 app.get('/account', function(req,res) {
   res.render('account')
 })
+
+app.get('/companies', function(req,res) {
+  res.render('companies')
+})
