@@ -8,7 +8,7 @@ body.bg {
 }
 
 #header {
-  height: 145px;
+  height: 100px;
   color: white;
 }
 
@@ -17,6 +17,7 @@ body.bg {
   font-size: 50px;
   margin-top: 20px;
   margin-left: 10px;
+  margin-bottom: 5px;
 }
 
 .logo a {
@@ -24,7 +25,7 @@ body.bg {
 }
 
 .top-nav {
-  height: 145px;
+  height: 100px;
 }
 
 .nav {
@@ -49,6 +50,7 @@ body.bg {
   font-size: 150px;
   line-height: 185px;
   color: black;
+  margin-top: 40px;
 }
 
 #cta span {
@@ -70,7 +72,7 @@ body.bg {
 }
 
 div#login {
-  margin-top: 100px;
+  margin-top: 150px;
 }
 
 div#login .credentials {
@@ -98,8 +100,11 @@ div#login input::placeholder {
 
 div#create {
   margin-top: 0;
+  width: 300px;
   background-color: rgba(0,0,0,0.5);
   padding: 25px 20px;
+  position: fixed;
+  right: 7%;
 }
 
 div#create .inputs {
@@ -149,6 +154,30 @@ div#create h1 {
   background-color: #ff3d00;
   padding: 3px 10px;
   display: inline-block;
+}
+
+h1.oops {
+  color: white;
+  font-size: 40px;
+  background-color: rgba(0,0,0,0.5);
+  padding: 20px 10px;
+}
+
+h2.oops {
+  color: white;
+  font-size: 30px;
+  background-color: rgba(0,0,0,0.5);
+  padding: 20px 10px;
+}
+
+h1.headline {
+  margin: 0;
+  color:  white;
+  font-size: 30px;
+}
+
+.card {
+
 }
 
 .fullscreen-bg { /* #VidBackground */

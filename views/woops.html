@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>HustlePuffin | Sign Up</title>
+  <title>HustlePuffin | Woops!</title>
   <link href="https://fonts.googleapis.com/css?family=Raleway:800|Source+Sans+Pro" rel="stylesheet">
   <link rel="stylesheet" href="/style.css">
   <link rel="stylesheet" href="/materialize.css">
@@ -24,26 +24,21 @@
     </div>
     <div class="top-nav col s6">
       <p class="nav">
-        <a class="account" href="/login">&nbspAlready a member?&nbsp<br>&nbspLOG IN&nbsp</a>
+        <a class="account" href="/login">&nbspLOG IN&nbsp</a>
+        <span class="account">&nbsp|&nbsp</span>
+        <a class="account" href="/signup">&nbspSIGN UP&nbsp</a>
       </p>
     </div>
   </div>
   <div class="container row main">
-    <div class="col s3"></div>
-    <div id="login" class="col s9 valign-wrapper">
-      <form method="POST" action="/signup">
-      <div class="credentials">
-        <input class="inputs" type="text" name="email" placeholder="Email" required=""/>
-      </div>
-      <div class="credentials">
-        <input class="inputs" type="text" name="password" placeholder="Password" required=""/>
-      </div>
-        <center>
-          <button class="btn deep-orange accent-3" type="submit" name="action"> Sign Up
-          </button>
-        </center>
-    </form>
+    <div class="col s1"></div>
+    <div id="login" class="col s10">
+      <center>
+        <h1 class="oops">Uh oh! It seems there was a problem with your credentials.</h1>
+        <h2 class="oops">Pleasure humor us and try again.</h2>
+      </center>
     </div>
+    <div class="col s1"></div>
   </div>
 </body>
 </html>
