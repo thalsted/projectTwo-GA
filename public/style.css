@@ -104,7 +104,7 @@ div#create {
   background-color: rgba(0,0,0,0.5);
   padding: 25px 20px;
   position: fixed;
-  right: 7%;
+  right: 36px;
 }
 
 div#create .inputs {
@@ -171,13 +171,66 @@ h2.oops {
 }
 
 h1.headline {
-  margin: 0;
-  color:  white;
-  font-size: 30px;
+  margin: 0 0 10px 20px;
+  color:  black;
+  background-color: rgba(255,255,225,0.7);
+  font-size: 35px;
+  padding: 3px 10px;
+  display: inline-block;
 }
 
-.card {
+#showcase h3 {
+  color: white;
+  font-size: 20px;
+  font-style: italic;
+  margin: 0;
+}
 
+.cards {
+  background-color: rgba(0,0,0,0.5);
+  padding: 10px 10px;
+  margin-bottom: 10px;
+}
+
+.cards a.title_link{
+  font-size: 20px;
+  color: white;
+  background-color: #ff3d00;
+  padding: 3px 10px;
+  display: block;
+}
+
+.cards a.title_link:hover{
+  font-style: italic;
+  animation: cycle 5s linear infinite;
+}
+
+.holder {
+  padding: 10px 15px;
+  color: white;
+  font-size: 15px;
+  line-height: 25px;
+}
+
+.holder a {
+  color: white;
+}
+
+.holder a:hover{
+  font-style: italic;
+}
+
+.holder span {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.stories {
+  font-size: 15px;
+}
+
+.date {
+  font-style: italic;
+  font-size: 10px;
 }
 
 .fullscreen-bg { /* #VidBackground */

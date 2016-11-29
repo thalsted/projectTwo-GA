@@ -30,7 +30,7 @@ CREATE TABLE contacts(
   email VARCHAR(100),
   phone VARCHAR(20),
   found_through VARCHAR(50),
-  date_created DATE NOT NULL DEFAULT(CURRENT_DATE),
+  date_created VARCHAR(20),
   note VARCHAR(200),
   PRIMARY KEY (cont_id),
   FOREIGN KEY (company_id) REFERENCES companies(comp_id)

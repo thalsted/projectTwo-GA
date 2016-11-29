@@ -25,22 +25,31 @@
   </div>
   <div class="row">
   <div class="col s1"></div>
-    <div class="col s5">
+    <div id="showcase" class="col s6">
       <h1 class="headline">My Companies</h1>
       <br>
-      <div class="card">
-      </div>
+      {{#empty}}
+        <div class="cards">
+          <h3> {{hustle}} </h3>
+        </div>
+      {{/empty}}
       {{#companies}}
-        {{name}}
-        {{phase}}
-        {{industry}}
-        {{description}}
-        {{url}}
-        {{user_email}}
-        <br>
+      <div class="cards">
+        <a class="title_link" href="/contacts/{{comp_id}}">{{name}}</a>
+        <div class="holder">
+          Phase: <span>{{phase}}</span>
+          <br>
+          Industry: <span>{{industry}}</span>
+          <br>
+          <a target="_blank" href="{{url}}">Website</a>
+          <br>
+          Description:
+          <br>
+          <span>{{description}}</span>
+        </div>
+      </div>
       {{/companies}}
     </div>
-    <div class="col s5"></div>
     <div id="create" class="col s3">
       <center>
         <h1>Add Company</h1>
@@ -67,7 +76,6 @@
         </center>
       </form>
     </div>
-    <div class="col s1"></div>
   </div>
 </body>
 </html>
