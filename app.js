@@ -132,7 +132,15 @@ app.post('/companies', function(req,res) {
 
   db.none("INSERT INTO companies(name, phase, industry, description, url, user_email) VALUES($1, $2, $3, $4, $5, $6)",[input.company, input.phase, input.industry, input.desc, input.url, data.email])
   .then(function(){
-    res.redirect('companies')
+    res.redirect('/companies')
+  })
+})
+
+app.delete('/companies/:id', function(req,res) {
+  var id = req.params.id;
+  db.none("DELETE FROM companies WHERE comp_id = $1",[id])
+  .then(function(){
+    res.redirect('/companies')
   })
 })
 
@@ -181,6 +189,7 @@ app.get('/contacts/:id', function(req,res) {
     var query = data[0].name.replace(/ /g,'+');
     var search = 'https://api.cognitive.microsoft.com/bing/v5.0/news/search?q='+query+'+business+news&mkt=en-us&category=business';
     json_data.company = data[0].name;
+    json_data.url = data[0].url;
     json_data.cid = data[0].comp_id;
     if(data[0].company_id != null) {
       json_data.contacts = data;
@@ -189,7 +198,7 @@ app.get('/contacts/:id', function(req,res) {
     }
     fetch(search, {
       method: 'GET',
-      headers: { 'ocp-apim-subscription-key': process.env.API_KEY },
+      headers: { 'ocp-apim-subscription-key': process.env.API_KEY }
     })
     .then(function(back) {
        return back.json();

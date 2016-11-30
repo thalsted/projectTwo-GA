@@ -19,7 +19,7 @@ CREATE TABLE companies(
   url VARCHAR(200),
   user_email VARCHAR(255),
   PRIMARY KEY (comp_id),
-  FOREIGN KEY (user_email) REFERENCES users(email)
+  FOREIGN KEY (user_email) REFERENCES users(email) ON DELETE CASCADE
 );
 
 CREATE TABLE contacts(
@@ -33,7 +33,7 @@ CREATE TABLE contacts(
   date_created VARCHAR(20),
   note VARCHAR(200),
   PRIMARY KEY (cont_id),
-  FOREIGN KEY (company_id) REFERENCES companies(comp_id)
+  FOREIGN KEY (company_id) REFERENCES companies(comp_id) ON DELETE CASCADE
 );
 
 CREATE TABLE interactions(
@@ -48,5 +48,5 @@ CREATE TABLE interactions(
   next_date DATE,
   score INTEGER CHECK (score > 0 AND score < 11),
   PRIMARY KEY (int_id),
-  FOREIGN KEY (contact_id) REFERENCES contacts(cont_id)
+  FOREIGN KEY (contact_id) REFERENCES contacts(cont_id) ON DELETE CASCADE
 );

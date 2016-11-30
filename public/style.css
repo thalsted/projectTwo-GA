@@ -192,6 +192,23 @@ h1.headline {
   margin-bottom: 10px;
 }
 
+.holder .icons {
+  display: inline-block;
+  float: right;
+}
+
+.holder form {
+  display: inline-block;
+}
+
+.holder button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin-left: 5px;
+  margin-top: 3px;
+}
+
 .cards a.title_link{
   font-size: 20px;
   color: white;
@@ -222,6 +239,10 @@ h1.headline {
 
 .holder span {
   font-family: 'Source Sans Pro', sans-serif;
+}
+
+.guesser {
+  cursor: pointer;
 }
 
 .date {

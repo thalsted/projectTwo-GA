@@ -7,6 +7,7 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:800|Source+Sans+Pro" rel="stylesheet">
   <link rel="stylesheet" href="/style.css">
   <link rel="stylesheet" href="/materialize.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script src="/jquery.js" type="text/javascript" defer></script>
   <script src="/script.js" type="text/javascript" defer></script>
 </head>
@@ -37,6 +38,14 @@
       <div class="cards">
         <a class="title_link" href="/contacts/{{comp_id}}">{{name}}</a>
         <div class="holder">
+          <div class="icons">
+            <form method="POST" action="/companies/{{comp_id}}?_method=PUT">
+              <button type="submit"><i class="tiny material-icons">mode_edit</i></button>
+            </form>
+            <form method="POST" action="/companies/{{comp_id}}?_method=DELETE">
+              <button type="submit"><i class="tiny material-icons">delete</i></button>
+            </form>
+          </div>
           Phase: <span>{{phase}}</span>
           <br>
           Industry: <span>{{industry}}</span>
@@ -44,6 +53,7 @@
           <a target="_blank" href="{{url}}">Website</a>
           <br>
           Description:
+
           <br>
           <span>{{description}}</span>
         </div>
