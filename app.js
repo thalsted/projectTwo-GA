@@ -129,8 +129,15 @@ app.post('/companies', function(req,res) {
   }
 
   var input = req.body;
+  var address = '';
 
-  db.none("INSERT INTO companies(name, phase, industry, description, url, user_email) VALUES($1, $2, $3, $4, $5, $6)",[input.company, input.phase, input.industry, input.desc, input.url, data.email])
+  if (input.url.includes('http')) {
+    address = input.url;
+  } else {
+    address = 'http://'+input.url;
+  }
+
+  db.none("INSERT INTO companies(name, phase, industry, description, url, user_email) VALUES($1, $2, $3, $4, $5, $6)",[input.company, input.phase, input.industry, input.desc, address, data.email])
   .then(function(){
     res.redirect('/companies')
   })
@@ -141,29 +148,6 @@ app.delete('/companies/:id', function(req,res) {
   db.none("DELETE FROM companies WHERE comp_id = $1",[id])
   .then(function(){
     res.redirect('/companies')
-  })
-})
-
-app.post('/contacts/:id', function(req,res) {
-  var logged_in;
-  var email;
-  var id = req.params.id;
-
-  if(req.session.user){
-    logged_in = true;
-    email = req.session.user.email;
-  }
-
-  var data = {
-   "logged_in": logged_in,
-   "email": email
-  }
-
-  var input = req.body;
-
-  db.none("INSERT INTO contacts(contact_name, company_id, title, email, phone, found_through, note, date_created) VALUES($1, $2, $3, $4, $5, $6, $7, $8)",[input.contact, id, input.title, input.email, input.phone, input.found_through, input.note, moment().format("MMM Do YYYY")])
-  .then(function(){
-    res.redirect('/contacts/'+id)
   })
 })
 
@@ -206,6 +190,55 @@ app.get('/contacts/:id', function(req,res) {
       json_data.news = json;
       res.render('contacts',json_data)
     })
+  })
+})
+
+app.post('/contacts/:id', function(req,res) {
+  var logged_in;
+  var email;
+  var id = req.params.id;
+
+  if(req.session.user){
+    logged_in = true;
+    email = req.session.user.email;
+  }
+
+  var data = {
+   "logged_in": logged_in,
+   "email": email
+  }
+
+  var input = req.body;
+
+  db.none("INSERT INTO contacts(contact_name, company_id, title, email, phone, found_through, note, date_created) VALUES($1, $2, $3, $4, $5, $6, $7, $8)",[input.contact, id, input.title, input.email, input.phone, input.found_through, input.note, moment().format("MMM Do YYYY")])
+  .then(function(){
+    res.redirect('/contacts/'+id)
+  })
+})
+
+app.get('/interactions/:id', function(req,res) {
+  var logged_in;
+  var email;
+
+  if(req.session.user){
+    logged_in = true;
+    email = req.session.user.email;
+  }
+
+  var data = {
+   "logged_in": logged_in,
+   "email": email
+  }
+
+  db.any("SELECT * FROM companies WHERE user_email = $1",[data.email])
+  .then(function(cData) {
+    var json_data = {};
+    if(cData.length != 0) {
+      json_data.companies = cData;
+    } else {
+      json_data.empty = {hustle: "No companies yet, time to hustle."}
+    }
+    res.render('companies', json_data)
   })
 })
 
