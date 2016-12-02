@@ -1,8 +1,47 @@
 $(document).ready(function() {
 
-var emailGuesser = function() {
+var loader = function() {
   var loc = window.location.pathname.split('/')[1];
   if (loc === 'contacts') {
+    $('button.update').each(function(x) {
+      $(this).click(function(){
+        var name = $('a.title_link')[x].textContent;
+        var title = $('span.1')[x].textContent;
+        var email = $('span.email')[x].textContent;
+        var phone = $('span.2')[x].textContent;
+        var source = $('span.3')[x].textContent;
+        var notes = $('span.4')[x].textContent;
+        var id = $('a.title_link')[x].href.split('interactions/')[1];
+        var cid = $(this).data('company');
+        var link = "/contacts/"+id+"/"+cid+"?_method=PUT"
+
+        if(email === 'Puffin.AI Guess') {
+          email = '';
+        }
+
+        $('input[name="contact"]').val(name);
+        $('input[name="title"]').val(title);
+        $('input[name="email"]').val(email);
+        $('input[name="phone"]').val(phone);
+        $('input[name="found_through"]').val(source);
+        $('textarea[name="note"]').val(notes);
+
+        $('input.inputs').each(function(y) {
+          if($(this).val() != '') {
+            $(this).attr('placeholder','');
+          }
+        })
+
+        if($('textarea[name="note"]').val() != '') {
+          $('textarea[name="note"]').attr('placeholder','');
+        }
+
+        $('div#create h1').text('Edit Contact')
+        $('button.btn[name="action"]').text('Update')
+
+        $('div#create form').attr('action',link)
+      })
+    })
     $('span.email').each(function(x){
       if($(this).text() === '') {
         $(this).html('<a class="guesser">Puffin.AI Guess</a>');
@@ -64,8 +103,56 @@ var emailGuesser = function() {
         })
       }
     })
+  } else if(loc === 'companies') {
+    $('button.update').each(function(x) {
+      $(this).click(function(){
+        var name = $('a.title_link')[x].textContent;
+        var ind = $('span.1')[x].textContent;
+        var add = $('a.1')[x].href;
+        var desc = $('span.2')[x].textContent;
+        var id = $('a.title_link')[x].href.split('contacts/')[1];
+
+        if(add === 'http:/') {
+          add = '';
+        }
+
+        $('input[name="company"]').val(name).attr('placeholder','')
+        $('input[name="industry"]').val(ind).attr('placeholder','')
+        $('input[name="url"]').val(add).attr('placeholder','')
+        $('textarea[name="desc"]').val(desc).attr('placeholder','')
+
+        $('div#create h1').text('Edit Company')
+        $('button.btn[name="action"]').text('Update')
+
+        $('div#create form').attr('action','/companies/'+id+'?_method=PUT')
+      })
+    })
+  } else if(loc.includes('interactions')) {
+    $('button.update').each(function(x) {
+      $(this).click(function(){
+        var name = $('a.title_link')[x].textContent;
+        var ind = $('span.1')[x].textContent;
+        var add = $('a.1')[x].href;
+        var desc = $('span.2')[x].textContent;
+        var id = $('a.title_link')[x].href.split('contacts/')[1];
+
+        if(add === 'http:/') {
+          add = '';
+        }
+
+        $('input[name="company"]').val(name).attr('placeholder','')
+        $('input[name="industry"]').val(ind).attr('placeholder','')
+        $('input[name="url"]').val(add).attr('placeholder','')
+        $('textarea[name="desc"]').val(desc).attr('placeholder','')
+
+        $('div#create h1').text('Edit Company')
+        $('button.btn[name="action"]').text('Update')
+
+        $('div#create form').attr('action','/companies/'+id+'?_method=PUT')
+      })
+    })
   }
 }
 
-emailGuesser();
+loader();
 });

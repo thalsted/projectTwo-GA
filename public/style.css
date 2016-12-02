@@ -1,6 +1,5 @@
 body {
   font-family: 'Raleway', sans-serif;
-  /* font-family: 'Source Sans Pro', sans-serif; */
 }
 
 body.bg {
@@ -179,6 +178,15 @@ h1.headline {
   display: inline-block;
 }
 
+h1.headline1 {
+  margin-bottom: 10px;
+  color:  black;
+  background-color: rgba(255,255,225,0.7);
+  font-size: 35px;
+  padding: 3px 10px;
+  display: inline-block;
+}
+
 #showcase h3 {
   color: white;
   font-size: 20px;
@@ -220,6 +228,14 @@ h1.headline {
 .cards a.title_link:hover{
   font-style: italic;
   animation: cycle 5s linear infinite;
+}
+
+.cards a.title_int{
+  font-size: 20px;
+  color: white;
+  background-color: #ff3d00;
+  padding: 3px 10px;
+  display: block;
 }
 
 .holder {

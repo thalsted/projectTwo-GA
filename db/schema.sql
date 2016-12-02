@@ -13,7 +13,6 @@ CREATE TABLE users (
 CREATE TABLE companies(
   comp_id SERIAL,
   name VARCHAR(50) NOT NULL,
-  phase VARCHAR(15) CHECK (phase IN ('Target', 'Engaged', 'Interviewing','Lost','Won')) NOT NULL,
   industry VARCHAR(25),
   description VARCHAR(300),
   url VARCHAR(200),
@@ -40,13 +39,10 @@ CREATE TABLE interactions(
   int_id SERIAL,
   contact_id INTEGER NOT NULL,
   interaction_date DATE NOT NULL,
-  medium VARCHAR(25),
   type VARCHAR(25),
   notes VARCHAR(400),
-  next_status BOOLEAN,
   next_step VARCHAR(100),
   next_date DATE,
-  score INTEGER CHECK (score > 0 AND score < 11),
   PRIMARY KEY (int_id),
   FOREIGN KEY (contact_id) REFERENCES contacts(cont_id) ON DELETE CASCADE
 );

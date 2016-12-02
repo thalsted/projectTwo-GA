@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>HustlePuffin | Home</title>
+  <title>HustlePuffin | Upcoming Next Steps</title>
   <link href="https://fonts.googleapis.com/css?family=Raleway:800|Source+Sans+Pro" rel="stylesheet">
   <link rel="stylesheet" href="/style.css">
   <link rel="stylesheet" href="/materialize.css">
@@ -23,9 +23,25 @@
       </p>
     </div>
   </div>
-  <div class="container row">
-    <div class="col s7"></div>
-    <div class="col s5"></div>
+  <div class="row">
+   <div class="col s2"></div>
+    <div id="showcase" class="col s8">
+      {{#days}}
+        <center><h1 class="headline1">{{day}}</h1></center>
+        {{#interactions}}
+        <div class="cards">
+          <a class="title_link" href="/interactions/{{cont_id}}">{{contact_name}}, {{title}} @ {{name}}</a>
+          <div class="holder">
+            Next Step: <span>{{next_step}}</span>
+            <br>
+            Notes:
+            <br>
+            <span>{{notes}}</span>
+          </div>
+        </div>
+        {{/interactions}}
+      {{/days}}
+    </div>
   </div>
 </body>
 </html>

@@ -20,7 +20,7 @@
     </div>
     <div class="top-nav col s6">
       <p class="nav">
-        <a class="account" href="/companies">&nbspCompanies&nbsp</a>
+        <a class="account" href="/companies">&nbspCOMPANIES&nbsp</a>
       </p>
     </div>
   </div>
@@ -38,17 +38,23 @@
       <div class="cards">
         <a class="title_link" href="/interactions/{{cont_id}}">{{contact_name}}</a>
         <div class="holder">
-          Title: <span>{{title}}</span>
+          <div class="icons">
+            <button class="update" data-company="{{company_id}}"><i class="tiny material-icons">mode_edit</i></button>
+            <form method="POST" action="/contacts/{{cont_id}}/{{company_id}}?_method=DELETE">
+              <button type="submit"><i class="tiny material-icons">delete</i></button>
+            </form>
+          </div>
+          Title: <span class="1">{{title}}</span>
           <br>
           Email: <span class="email">{{email}}</span>
           <br>
-          Phone: <span>{{phone}}</span>
+          Phone: <span class="2">{{phone}}</span>
           <br>
-          Source: <span>{{found_through}}</span>
+          Source: <span class="3">{{found_through}}</span>
           <br>
           Notes:
           <br>
-          <span>{{note}}</span>
+          <span class="4">{{note}}</span>
           <br>
           <span class="date">Created: {{date_created}}</span>
         </div>

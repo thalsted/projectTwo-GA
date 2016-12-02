@@ -20,65 +20,66 @@
     </div>
     <div class="top-nav col s6">
       <p class="nav">
-        <a class="account" href="/contacts">&nbspContacts&nbsp</a>
+        <a class="account" href="/contacts/{{cid}}">&nbspCONTACTS&nbsp</a>
+        <span class="account">&nbsp|&nbsp</span>
+        <a class="account" href="/account">&nbspNEXT STEPS&nbsp</a>
       </p>
     </div>
   </div>
   <div class="row">
   <div class="col s1"></div>
     <div id="showcase" class="col s6">
-      <h1 class="headline">Interactions</h1>
+      <h1 class="headline">{{person}}</h1>
       <br>
       {{#empty}}
         <div class="cards">
           <h3>{{hustle}}</h3>
         </div>
       {{/empty}}
-      {{#companies}}
+      {{#interactions}}
       <div class="cards">
-        <a class="title_link" href="/contacts/{{comp_id}}">{{name}}</a>
+        <a class="title_int">{{interaction_date}}</a>
         <div class="holder">
           <div class="icons">
             <form method="POST" action="/companies/{{comp_id}}?_method=PUT">
               <button type="submit"><i class="tiny material-icons">mode_edit</i></button>
             </form>
-            <form method="POST" action="/companies/{{comp_id}}?_method=DELETE">
+            <form method="POST" action="/interactions/{{int_id}}/{{contact_id}}?_method=DELETE">
               <button type="submit"><i class="tiny material-icons">delete</i></button>
             </form>
           </div>
-          Phase: <span>{{phase}}</span>
+          Type: <span>{{type}}</span>
           <br>
-          Industry: <span>{{industry}}</span>
+          Next Steps: <span>{{next_step}}</span>
           <br>
-          <a target="_blank" href="{{url}}">Website</a>
+          Follow Up Date: <span>{{next_date}}</span>
           <br>
-          Description:
-
+          Notes:
           <br>
-          <span>{{description}}</span>
+          <span>{{notes}}</span>
         </div>
       </div>
-      {{/companies}}
+      {{/interactions}}
     </div>
     <div id="create" class="col s3">
       <center>
-        <h1>Add Company</h1>
+        <h1>Add Interaction</h1>
       </center>
-      <form method="POST" action="/companies">
+      <form method="POST" action="/interactions/{{cid}}">
         <div>
-          <input class="inputs" type="text" name="company" placeholder="Company" required=""/>
+          <input class="inputs" type="text" name="int_date" placeholder="Date" required=""/>
         </div>
         <div>
-          <input class="inputs" type="text" name="industry" placeholder="Industry"/>
+          <input class="inputs" type="text" name="type" placeholder="Type"/>
         </div>
         <div>
-          <input class="inputs" type="text" name="phase" placeholder="Phase" required=""/>
+          <input class="inputs" type="text" name="next" placeholder="Next Steps" required=""/>
         </div>
         <div>
-          <input class="inputs" type="text" name="url" placeholder="Website"/>
+          <input class="inputs" type="text" name="next_date" placeholder="Follow Up Date"/>
         </div>
         <div>
-          <textarea class="materialize-textarea" type="text" name="desc" placeholder="Description"></textarea>
+          <textarea class="materialize-textarea" type="text" name="note" placeholder="Notes"></textarea>
         </div>
         <center>
           <button class="btn deep-orange accent-3" type="submit" name="action"> Create
