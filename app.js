@@ -235,8 +235,7 @@ app.get('/contacts/:id', function(req,res) {
     }
     fetch(search, {
       method: 'GET',
-      headers: { 'ocp-apim-subscription-key': process.env.API_KEY
-      }
+      headers: { 'ocp-apim-subscription-key': process.env.API_KEY}
     })
     .then(function(back) {
        return back.json();
