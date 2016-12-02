@@ -39,7 +39,7 @@
         <a class="title_link" href="/interactions/{{cont_id}}">{{contact_name}}</a>
         <div class="holder">
           <div class="icons">
-            <button class="update" data-company="{{company_id}}"><i class="tiny material-icons">mode_edit</i></button>
+            <button class="update" data-company="{{company_id}}" data-contact="{{cont_id}}"><i class="tiny material-icons">mode_edit</i></button>
             <form method="POST" action="/contacts/{{cont_id}}/{{company_id}}?_method=DELETE">
               <button type="submit"><i class="tiny material-icons">delete</i></button>
             </form>

@@ -138,7 +138,7 @@ app.get('/companies', function(req,res) {
    "email": email
   }
 
-  db.any("SELECT * FROM companies WHERE user_email = $1",[data.email])
+  db.any("SELECT * FROM companies WHERE user_email = $1 ORDER BY comp_id DESC",[data.email])
   .then(function(cData) {
     var json_data = {};
     if(cData.length != 0) {
@@ -221,7 +221,7 @@ app.get('/contacts/:id', function(req,res) {
   var id = req.params.id;
   var json_data = {};
 
-  db.any("SELECT * FROM companies LEFT JOIN contacts ON companies.comp_id = contacts.company_id WHERE companies.comp_id = $1",[id])
+  db.any("SELECT * FROM companies LEFT JOIN contacts ON companies.comp_id = contacts.company_id WHERE companies.comp_id = $1 ORDER BY contacts.cont_id DESC",[id])
   .then(function(cData) {
     var query = cData[0].name.replace(/ /g,'+');
     var search = 'https://api.cognitive.microsoft.com/bing/v5.0/news/search?q='+query+'+business+news&mkt=en-us&category=business';
@@ -235,7 +235,7 @@ app.get('/contacts/:id', function(req,res) {
     }
     fetch(search, {
       method: 'GET',
-      headers: { 'ocp-apim-subscription-key': process.env.API_KEY}
+      headers: {'ocp-apim-subscription-key': process.env.API_KEY}
     })
     .then(function(back) {
        return back.json();
@@ -280,14 +280,16 @@ app.delete('/contacts/:id/:cid', function(req,res) {
 app.get('/interactions/:id', function(req,res) {
   var id = req.params.id;
 
-  db.any("SELECT * FROM contacts LEFT JOIN interactions ON contacts.cont_id = interactions.contact_id WHERE contacts.cont_id = $1",[id])
+  db.any("SELECT * FROM contacts LEFT JOIN interactions ON contacts.cont_id = interactions.contact_id WHERE contacts.cont_id = $1 ORDER BY interactions.interaction_date DESC",[id])
   .then(function(cData) {
     var json_data = {};
     json_data.person = cData[0].contact_name;
     json_data.cid = cData[0].cont_id;
     if(cData[0].contact_id != null) {
       cData.forEach(function(x,y) {
+        cData[y].interaction_dateShort = moment(x.interaction_date).format("MM/DD/YY")
         cData[y].interaction_date = moment(x.interaction_date).format("MMMM Do, YYYY | dddd")
+        cData[y].next_dateShort = moment(x.next_date).format("MM/DD/YY")
         cData[y].next_date = moment(x.next_date).format("MMMM Do, YYYY | dddd")
       })
       json_data.interactions = cData;
@@ -305,6 +307,17 @@ app.post('/interactions/:id', function(req,res) {
   db.none("INSERT INTO interactions(contact_id, interaction_date, type, next_step, next_date, notes) VALUES($1, $2, $3, $4, $5, $6)",[id, input.int_date, input.type, input.next, input.next_date, input.note])
   .then(function(){
     res.redirect('/interactions/'+id)
+  })
+})
+
+app.put('/interactions/:id/:cid', function(req,res) {
+  var id = req.params.id;
+  var cid = req.params.cid;
+  var input = req.body;
+
+  db.none("UPDATE interactions SET interaction_date = $1, type = $2, notes = $3, next_step = $4, next_date = $5 WHERE int_id = $6",[input.int_date, input.type, input.note, input.next, input.next_date, id])
+  .then(function(){
+    res.redirect('/interactions/'+cid)
   })
 })
 

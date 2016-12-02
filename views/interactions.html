@@ -41,22 +41,20 @@
         <a class="title_int">{{interaction_date}}</a>
         <div class="holder">
           <div class="icons">
-            <form method="POST" action="/companies/{{comp_id}}?_method=PUT">
-              <button type="submit"><i class="tiny material-icons">mode_edit</i></button>
-            </form>
+            <button class="update" data-date="{{interaction_dateShort}}" data-date1="{{next_dateShort}}" data-contact="{{contact_id}}" data-int="{{int_id}}"><i class="tiny material-icons">mode_edit</i></button>
             <form method="POST" action="/interactions/{{int_id}}/{{contact_id}}?_method=DELETE">
               <button type="submit"><i class="tiny material-icons">delete</i></button>
             </form>
           </div>
-          Type: <span>{{type}}</span>
+          Type: <span class="1">{{type}}</span>
           <br>
-          Next Steps: <span>{{next_step}}</span>
+          Next Steps: <span class="2">{{next_step}}</span>
           <br>
           Follow Up Date: <span>{{next_date}}</span>
           <br>
           Notes:
           <br>
-          <span>{{notes}}</span>
+          <span class="3">{{notes}}</span>
         </div>
       </div>
       {{/interactions}}
